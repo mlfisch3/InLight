@@ -1,3 +1,5 @@
+[browser]
+gatherUsageStats = false
 [runner]
 fastReruns = false
 [server]
