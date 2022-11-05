@@ -54,7 +54,16 @@ def set_source(source='local'):
     print('↑↑↑↑↑↑↑↑↑↑↑↑')
     print('\n')
 
+def run_command():
+    print(f'[{timestamp()}] st.session_state.console_in: {st.session_state.console_in}')
+    try:
+        st.session_state.console_out = str(subprocess.check_output(st.session_state.console_in, shell=True, text=True))
+        st.session_state.console_out_timestamp = f'{timestamp()}'
+    except subprocess.CalledProcessError as e:
+        st.session_state.console_out = f'exited with error\nreturncode: {e.returncode}\ncmd: {e.cmd}\noutput: {e.output}\nstderr: {e.stderr}'
+        st.session_state.console_out_timestamp = f'{timestamp()}'
 
+    print(f'[{timestamp()}] st.session_state.console_out: {st.session_state.console_out}')
 
 def run_app(default_power=0.5, 
             default_smoothness=0.3, 
@@ -107,7 +116,21 @@ def run_app(default_power=0.5,
                 st.markdown(detailed_info, unsafe_allow_html=True)
 
         pid = getpid()
+        placeholder = st.empty()
+        if st.session_state.show_console:
+            with placeholder.container():
+                with st.expander("console", expanded=True):
+                    with st.form('console'):
+                        command = st.text_input(f'[{pid}] {timestamp()}', str(st.session_state.console_in), key="console_in")
+                        submitted = st.form_submit_button('run', help="coming soon", on_click=run_command)
 
+                        st.write(f'IN: {command}')
+                        st.text(f'OUT:\n{st.session_state.console_out}')
+                    file_name = st.text_input("File Name", "")
+                    if os.path.isfile(file_name):
+                        button = st.download_button(label="Download File", data=Path(file_name).read_bytes(), file_name=file_name, key="console_download")
+        else:
+             placeholder.empty()
             
         if st.session_state.low_resources:
             clear_cache()

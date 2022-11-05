@@ -56,6 +56,11 @@ def main():
     else:
         st.session_state.show_resource_usage = False
 
+    if 'console' in query_params:
+        st.session_state.show_console = query_params['console'][0]
+    else:
+        st.session_state.show_console = False
+
     if 'debug' in query_params:
         st.session_state.debug = query_params['debug'][0]
     else:
