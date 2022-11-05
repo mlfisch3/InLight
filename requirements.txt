@@ -1,0 +1,8 @@
+streamlit
+streamlit-image-comparison
+opencv-contrib-python-headless
+numpy
+scipy
+pillow
+matplotlib
+psutil
