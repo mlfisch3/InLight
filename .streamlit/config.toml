@@ -1,3 +1,5 @@
+[logger]
+level = "debug"
 [browser]
 gatherUsageStats = false
 serverPort = 8502
