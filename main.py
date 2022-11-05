@@ -1,6 +1,6 @@
 import streamlit as st
 
-title = f'Light-Fix'
+title = f'InLight'
 st.set_page_config(page_title=title, layout="wide")
 
 hide_streamlit_style = """
@@ -55,11 +55,6 @@ def main():
         st.session_state.show_resource_usage = query_params['resources'][0]
     else:
         st.session_state.show_resource_usage = False
-
-    if 'console' in query_params:
-        st.session_state.show_console = query_params['console'][0]
-    else:
-        st.session_state.show_console = False
 
     if 'debug' in query_params:
         st.session_state.debug = query_params['debug'][0]

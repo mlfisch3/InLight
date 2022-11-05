@@ -171,10 +171,6 @@ def initialize_session():
     # if 'right_image_selection_index' not in st.session_state:
     #     st.session_state.right_image_selection_index = 1
 
-    if 'query_params' not in st.session_state:
-        st.session_state.query_params = {}
-        st.session_state.query_params['console'] = False
-
     if 'total_main_runs' not in st.session_state:
         st.session_state.total_main_runs = 0
 
@@ -250,15 +246,6 @@ def initialize_session():
         st.session_state.show_resource_usage = False
     else:
         st.session_state.show_resource_usage = False
-
-    if 'show_console' not in st.session_state:
-        st.session_state.show_console = False
-
-    if 'console_out' not in st.session_state:
-        st.session_state.console_out = ''
-
-    if 'console_in' not in st.session_state:
-        st.session_state.console_in = ''
 
     if 'keys_to_npy' not in st.session_state:
         st.session_state.keys_to_npy = {}
