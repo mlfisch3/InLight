@@ -3,7 +3,8 @@ fastReruns = false
 [server]
 headless = true
 runOnSave = true
-port = 5001
+port = 8502
+serverPort = 8502
 enableCORS = false
 enableXsrfProtection=false
 [theme]
