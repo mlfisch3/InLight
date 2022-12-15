@@ -104,7 +104,11 @@ def run_app(default_power=0.5,
 
                 st.markdown("<h3 style='text-align: left; color: yellow'>Upload your own images to enhance</h3>", unsafe_allow_html=True)
             with details_tab:
-                detailed_info = f'InLight restores lighting detail to underexposed image regions.\n\r\n\rThe app is fully functional, but help descriptions are still being added.\n\rThis detailed information section will be expanded.\n\rA detailed explanation of the underlying algorithm is also in preparation'
+                
+                #Help descriptions are still being added.\n\rThis detailed information section will be expanded.\n\rA detailed explanation of the underlying algorithm is also in preparation'
+                #detailed_info = f'InLight restores lighting detail to underexposed image regions.\n\r\n\rThe app is fully functional, but help descriptions are still being added.\n\rThis detailed information section will be expanded.\n\rA detailed explanation of the underlying algorithm is also in preparation'
+                detailed_info = f'InLight restores lighting detail to underexposed image regions.\n\r\n\rThe app is an interactive Python implementation of the BIMEF algorithm published in these 2017 papers [1]("https://arxiv.org/abs/1711.00591"), [2]("https://www.researchgate.net/publication/320728375"), [3]("https://www.researchgate.net/publication/318730125").\n\n\n\rI became aware of this method while exploring the OpenCV intensity_transform [module]("https://docs.opencv.org/4.x/dc/dfe/group__intensity__transform.html#ga9b65943a38b905f9ed42a622de92e740").\n\n\n\rThe effectiveness of this method impressed me to the point that I wanted to really understand how it works.  Being new to computer vision, I decided the best way to learn a lot was to completely implement BIMEF from scratch.\n\n\n\rAfter getting everything to work in a Jupyter notebook, I thought it would be interesting to have a fully functional GUI so I could easily view the effects of changing model parameters.\n\n\n\rThis was very useful for developing an intuition for the various mathematical and perceptual concepts involved.\n\n\n\rIt was also great to have an efficient way to fix all the photos I have taken with bad lighting ☺.\n\n\n\rThe next natural step was to make it available as a web app.\n\n\n\rInLight is the result.'
+                 
                 details = f""" 
                 <style>
                 p.a {{
