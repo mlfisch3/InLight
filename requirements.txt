@@ -1,6 +1,6 @@
 streamlit
 streamlit-image-comparison
-sahi==0.11.6
+sahi==0.10.7
 opencv-contrib-python-headless
 numpy
 scipy
