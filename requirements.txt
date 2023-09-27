@@ -1,9 +1,9 @@
 streamlit
 streamlit-image-comparison
-sahi==0.10.8
 opencv-contrib-python-headless
 numpy
 scipy
 pillow
 matplotlib
 psutil
+pympler

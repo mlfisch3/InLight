@@ -10,16 +10,16 @@
       "filename": "bus.jpg"
     },
     {
-      "label": "sidewalk4",
-      "filename": "sidewalk4.jpg"
+      "label": "sidewalk",
+      "filename": "sidewalk.jpg"
     },
     {
       "label": "stoop",
       "filename": "stoop.jpg"
     },
     {
-      "label": "park1",
-      "filename": "park1.jpg"
+      "label": "park",
+      "filename": "park.jpg"
     },
     {
       "label": "hotrod",
@@ -64,6 +64,10 @@
     {
       "label": "storefront",
       "filename": "storefront.jpg"
+    },
+    {
+      "label": "scrapyard",
+      "filename": "scrapyard.jpg"
     }
   ]
 }
