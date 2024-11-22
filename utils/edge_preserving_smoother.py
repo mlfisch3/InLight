@@ -3,6 +3,7 @@ import os
 import numpy as np
 import weakref
 import cv2
+import inspect
 
 from scipy import signal
 from scipy.sparse import spdiags, csc_matrix
@@ -229,7 +230,12 @@ def solve_sparse_system(A, B, method='cg', CG_prec='ILU', CG_TOL=0.1, LU_TOL=0.0
             M = None
         if x0 is None:
             x0 = b  # input image more closely resembles its smoothed self than a draw from any distribution
-        return cg(A, b, x0=x0, tol=CG_TOL, maxiter=MAX_ITER, M=M)[0].astype(np.float32).reshape(r,c, order='F')
+
+        cg_parameters = inspect.signature(cg).parameters
+        if 'rtol' in cg_parameters: # 'tol' was removed in SciPy v.1.14.0 in favor of 'rtol' and 'atol'
+            return cg(A, b, x0=x0, rtol=CG_TOL, maxiter=MAX_ITER, M=M)[0].astype(np.float32).reshape(r,c, order='F')
+        else:
+            return cg(A, b, x0=x0, tol=CG_TOL, maxiter=MAX_ITER, M=M)[0].astype(np.float32).reshape(r,c, order='F')
 
     elif method == 'direct':
         use_solver( useUmfpack = False ) # use single precision
