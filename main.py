@@ -43,35 +43,46 @@ def main():
 
     st.session_state.total_main_runs += 1
 
-    query_params = st.experimental_get_query_params()
-    for k,v in query_params.items():
-        ss.query_params[k] = v[0]
-        ss.query_params.setdefault(k,v[0])
+    query_params = st.query_params
+    for k, v in query_params.items():
+        st.session_state.query_params[k] = v
+        st.session_state.query_params.setdefault(k, v)
 
-    if 'cache' in query_params:
-        st.session_state.cache_clearance = query_params['cache'][0]
-    else:
-        st.session_state.cache_clearance = False
+    st.session_state.cache_clearance = query_params.get("cache", False)
+    st.session_state.show_resource_usage = query_params.get("resources", False)
+    st.session_state.show_console = query_params.get("console", False)
+    st.session_state.debug = query_params.get("debug", False)
+    st.session_state.reconfig = query_params.get("reconfig", False)
+    
+    # query_params = st.experimental_get_query_params()
+    # for k,v in query_params.items():
+    #     ss.query_params[k] = v[0]
+    #     ss.query_params.setdefault(k,v[0])
 
-    if 'resources' in query_params:
-        st.session_state.show_resource_usage = query_params['resources'][0]
-    else:
-        st.session_state.show_resource_usage = False
+    # if 'cache' in query_params:
+    #     st.session_state.cache_clearance = query_params['cache'][0]
+    # else:
+    #     st.session_state.cache_clearance = False
 
-    if 'console' in query_params:
-        st.session_state.show_console = query_params['console'][0]
-    else:
-        st.session_state.show_console = False
+    # if 'resources' in query_params:
+    #     st.session_state.show_resource_usage = query_params['resources'][0]
+    # else:
+    #     st.session_state.show_resource_usage = False
 
-    if 'debug' in query_params:
-        st.session_state.debug = query_params['debug'][0]
-    else:
-        st.session_state.debug = False
+    # if 'console' in query_params:
+    #     st.session_state.show_console = query_params['console'][0]
+    # else:
+    #     st.session_state.show_console = False
 
-    if 'reconfig' in query_params:
-        st.session_state.reconfig = query_params['reconfig'][0]
-    else:
-        st.session_state.reconfig = False
+    # if 'debug' in query_params:
+    #     st.session_state.debug = query_params['debug'][0]
+    # else:
+    #     st.session_state.debug = False
+
+    # if 'reconfig' in query_params:
+    #     st.session_state.reconfig = query_params['reconfig'][0]
+    # else:
+    #     st.session_state.reconfig = False
 
     if st.session_state.reconfig:
         reload(utils.config)
