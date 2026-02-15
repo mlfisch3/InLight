@@ -178,7 +178,7 @@ def run_app(default_power=0.5,
             st.session_state.input_data_path = input_data_path
             st.session_state.upload_key = str(randint(1000, 10000000))
             fImage = None
-            st.experimental_rerun()
+            st.rerun()
 
         if st.session_state.source_last_updated == 'upload':
             st.session_state.input_file_path = st.session_state.input_data_path
